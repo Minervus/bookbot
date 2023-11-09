@@ -27,9 +27,6 @@ def letter_counter(text_string):
     return letter_dictionary
 
 
-#count_words(words)
-#letter_counter(text_string)
-
 num_words = count_words(words)
 letter_count_dict = letter_counter(text_string)
 
@@ -39,9 +36,22 @@ for key, value in letter_count_dict.items():
     temp = [key,value]
     letter_list.append(temp)
 
-sorted_letter_list = letter_list.sort()
+# Initialize empty array to populate with alpha characters
+sorted_letter_list = []
 
+for i in range(0,len(letter_list)):
+    if letter_list[i][0].isalpha():
+        sorted_letter_list.append(letter_list[i])
 
-print(sorted_letter_list)
+# Sorting the list alphabetically (doesn't return a value, sorts in place)
+sorted_letter_list.sort()
+
+# Printing the final report
 print(f"--- Begin report of {f.name} ---")
 print(f"{num_words} words found in the document")
+print()
+
+for i in range(0,len(sorted_letter_list)):
+    print(f"The '{sorted_letter_list[i][0]}' character was found {sorted_letter_list[i][1]} times")
+
+print("--- End report ---")
